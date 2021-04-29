@@ -11,7 +11,7 @@ from pygame.locals import *
 BLACK = (  0,  0,  0)
 WHITE = (255,255,255)
 
-def namedisplayText(text, xPosition, yPosition, fontName=None, fontSize=12, fontColor=BLACK, backgroundColor=WHITE):
+def displayText(text, xPosition, yPosition, fontName=None, fontSize=12, fontColor=BLACK, backgroundColor=WHITE):
     screen.blit(text, xPosition, yPosition, fontName, fontSize, fontColor, backgroundColor)
 
 ## Initialize PyGame
@@ -64,7 +64,6 @@ while True:
         posX = 0
 
     if posY > 480:
-
         posY = 0
 
     ## Update the screen
@@ -73,14 +72,5 @@ while True:
 
 
     '''
-    1.
-    - a frame is a single still image in an animation. Many frames that are slightly altered and viewed in rapid succession create the illusion of movement
-    - FPS is frames per second. It is a number that corresponds to the amount of [still images](frames) viewed [for each](per) interval of 1 second of time that passes
-    - pygame.time.Clock() is an Object in the 'time' module located inside the 'pygame' module. This type of Object can track the amount of time since its initialization and has many methods that can be used to manipulate, alter, and utilize time.
     
-    2. There must be an initialized Clock object, an FPS variable, and a regular call to the Object's tick() method including the FPS variable as a parameter. Alternatively one could just include an integer as a tick() argument and not include an FPS variable, but this would prove to be a less flexible option.
-    3. tick() method
-    4. Hertz
-    5. The game runs too slow.
-    6. The Clock.tick() method is used to track the amount of time since the last call to .tick() for that instance of the object. This method pauses the program for the amount of time required to achieve the FPS that is included as its parameter.
     '''
