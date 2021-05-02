@@ -23,6 +23,9 @@ yPos = 0
 directionX = 0
 directionY = 0
 
+# Speed
+cat_vel = 1
+
 # Set screen width and height
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -52,13 +55,13 @@ while True:
         ## event logic to capture when the user presses arrow keys.
         if event.type == KEYDOWN:
             if event.key == K_LEFT:
-                directionX = -1
+                directionX = -cat_vel
             elif event.key == K_RIGHT:
-                directionX = +1
+                directionX = +cat_vel
             elif event.key == K_UP:
-                directionY = -1
+                directionY = -cat_vel
             elif event.key == K_DOWN:
-                 directionY = +1
+                 directionY = +cat_vel
 
         if event.type == KEYUP:
             if event.key == K_LEFT:
