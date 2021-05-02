@@ -24,7 +24,7 @@ directionX = 0
 directionY = 0
 
 # Speed
-cat_vel = 1
+CAT_VEL = 5
 
 # Set screen width and height
 SCREEN_WIDTH = 640
@@ -34,7 +34,7 @@ SCREEN_HEIGHT = 480
 pygame.init()
 
 ## Clock stuff
-FPS = 60
+FPS = 30
 fpsClock = pygame.time.Clock()
 
 ## Set the screen size
@@ -55,13 +55,13 @@ while True:
         ## event logic to capture when the user presses arrow keys.
         if event.type == KEYDOWN:
             if event.key == K_LEFT:
-                directionX = -cat_vel
+                directionX = -CAT_VEL
             elif event.key == K_RIGHT:
-                directionX = +cat_vel
+                directionX = +CAT_VEL
             elif event.key == K_UP:
-                directionY = -cat_vel
+                directionY = -CAT_VEL
             elif event.key == K_DOWN:
-                 directionY = +cat_vel
+                directionY = +CAT_VEL
 
         if event.type == KEYUP:
             if event.key == K_LEFT:
