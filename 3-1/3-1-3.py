@@ -73,6 +73,8 @@ while True:
             elif event.key == K_DOWN:
                  directionY = 0
 
+    
+
     ## This logic identifies where the object should move
     xPos += directionX
     yPos += directionY
