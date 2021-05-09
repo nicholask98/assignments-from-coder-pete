@@ -55,25 +55,13 @@ while True:
         ## event logic to capture when the user presses arrow keys.
         if event.type == KEYDOWN:
             if event.key == K_LEFT:
-                if xPos >= 0 + CAT_VEL:
-                    directionX = -CAT_VEL
-                else:
-                    xPos = 0
+                directionX = -CAT_VEL
             elif event.key == K_RIGHT:
-                if xPos <= SCREEN_WIDTH:
-                    directionX = +CAT_VEL
-                else:
-                    xPos = SCREEN_WIDTH
-            elif event.key == K_UP:
-                if yPos >= 0 + CAT_VEL:
-                    directionY = -CAT_VEL
-                else:
-                    yPos = 0
+                directionX = +CAT_VEL
+            elif event.key == K_UP:    
+                directionY = -CAT_VEL
             elif event.key == K_DOWN:
-                if yPos <= SCREEN_HEIGHT:
-                    directionY = +CAT_VEL
-                else:
-                    yPos = SCREEN_HEIGHT
+                directionY = +CAT_VEL
 
         if event.type == KEYUP:
             if event.key == K_LEFT:
@@ -85,11 +73,11 @@ while True:
             elif event.key == K_DOWN:
                  directionY = 0
 
-        
-
     ## This logic identifies where the object should move
-    xPos += directionX
-    yPos += directionY
+    if 0 <= xPos and directionX < 0 or xPos <= SCREEN_WIDTH and directionX > 0:
+        xPos += directionX
+    if 0 <= yPos and directionY < 0 or yPos <= SCREEN_HEIGHT and directionY > 0:
+        yPos += directionY
 
     ## Repaint the screen with the objects in the new positions
     screen.blit(background, (0, 0))
