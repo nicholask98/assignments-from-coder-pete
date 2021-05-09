@@ -55,13 +55,25 @@ while True:
         ## event logic to capture when the user presses arrow keys.
         if event.type == KEYDOWN:
             if event.key == K_LEFT:
-                directionX = -CAT_VEL
+                if xPos >= 0 + CAT_VEL:
+                    directionX = -CAT_VEL
+                else:
+                    xPos = 0
             elif event.key == K_RIGHT:
-                directionX = +CAT_VEL
+                if xPos <= SCREEN_WIDTH:
+                    directionX = +CAT_VEL
+                else:
+                    xPos = SCREEN_WIDTH
             elif event.key == K_UP:
-                directionY = -CAT_VEL
+                if yPos >= 0 + CAT_VEL:
+                    directionY = -CAT_VEL
+                else:
+                    yPos = 0
             elif event.key == K_DOWN:
-                directionY = +CAT_VEL
+                if yPos <= SCREEN_HEIGHT:
+                    directionY = +CAT_VEL
+                else:
+                    yPos = SCREEN_HEIGHT
 
         if event.type == KEYUP:
             if event.key == K_LEFT:
@@ -73,7 +85,7 @@ while True:
             elif event.key == K_DOWN:
                  directionY = 0
 
-    
+        
 
     ## This logic identifies where the object should move
     xPos += directionX
