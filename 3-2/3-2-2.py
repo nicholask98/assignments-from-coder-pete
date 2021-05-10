@@ -4,6 +4,7 @@
 import pygame
 import sys
 from pygame.locals import *
+import math
 
 xPos = 0
 yPos = 0
@@ -40,13 +41,16 @@ while True:
         # Mouse logic
         if event.type == MOUSEBUTTONDOWN:
             mouse_pressed = pygame.mouse.get_pressed()
-            xPos, yPos = pygame.mouse.get_pos()
+            xPos_1, yPos_1 = pygame.mouse.get_pos()
 
             # Draw shapes
+        if event.type == MOUSEBUTTONUP:
+            xPos_2, yPos_2 = pygame.mouse.get_pos()
             if mouse_pressed[0]:
-                pygame.draw.rect(SCREEN, RED, (xPos, yPos, 30, 30))
+                pygame.draw.rect(SCREEN, RED, (xPos_1, yPos_1, abs(xPos_1 - xPos_2), abs(yPos_1 - yPos_2)))
             if mouse_pressed[2]:
-                pygame.draw.rect(SCREEN, BLUE, (xPos, yPos, 40, 50))
+                pygame.draw.rect(SCREEN, BLUE, (xPos_1, yPos_1, abs(xPos_1 - xPos_2), abs(yPos_1 - yPos_2)))
+
     
     pygame.display.flip()
     fpsClock.tick(FPS)
