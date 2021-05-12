@@ -1,0 +1,2 @@
+- Create a class called Star that will print out “A star is born!” every time it is created.
+- Create a class called Monster with attributes for health and a name. Add a constructor to the class that sets the health and name of the object with data passed in as parameters.
