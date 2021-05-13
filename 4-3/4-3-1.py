@@ -37,6 +37,7 @@ while not done:
             pygame.quit()
             sys.exit()
     
-    SCREEN.fill(WHITE) # FIXME: WHY TF IS THIS NOT WORKING
-    SCREEN.blit(circleObj.image, (circleObj.rect.x, circleObj.rect.y))
+    SCREEN.fill(WHITE)
+    SCREEN.blit(circleObj.image, (circleObj.rect.x, circleObj.rect.y)) #FIXME: Get rid of the black surrounding rect
+    pygame.display.flip()
     fpsClock.tick(FPS)
