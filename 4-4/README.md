@@ -30,8 +30,27 @@
 
 
 ## 4-4-2
+
 1. Edit pg4-4-1.py and save it as pg4-4-2.py
 
 2. Add an update(self) method to your Circle class. This method moves red circle objects down five pixels per frame and blue Circle objects up five pixels per frame.
 
 3. Don't forget to call the update() method using allSpriteGroup before executing the pygame.display.flip() command.
+
+## 4-4-3
+
+1. Edit pg4-4-2.py and save it as pg4-4-3.py
+
+2. Add two new sprite groups to your program:
+    - blueSpriteGroup- Add each blue sprite to this group immediately after you create it.
+    - redSpriteGroup- Add each red sprite to this group immediately after you create it.
+3. When the circles touch (collide), remove both of them from the screen. The syntax should be similar to this:
+    - pygame.sprite.groupcollide(group1???, group2???, True, True)
+
+* Note: group1 and group2 are Sprite groups. True means destroy the colliding sprite from the related group. Therefore, the first True means destroy the colliding sprite from group1 and the second True means destroy the colliding sprite from group2.
+
+
+### Advanced Programmers: 
+#### (if you complete your assignment early, you count as advanced)
+
+1. Replace the circle with an image you found on the Internet.
