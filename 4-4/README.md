@@ -27,3 +27,11 @@
     * Do not forget to add each circle object to the allSpriteGroup after you create it.
 
 6. Immediately after you fill the screen with the background color, call the draw() method of the allSpriteGroup to place the sprites on the screen.
+
+
+## 4-4-2
+1. Edit pg4-4-1.py and save it as pg4-4-2.py
+
+2. Add an update(self) method to your Circle class. This method moves red circle objects down five pixels per frame and blue Circle objects up five pixels per frame.
+
+3. Don't forget to call the update() method using allSpriteGroup before executing the pygame.display.flip() command.
