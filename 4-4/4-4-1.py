@@ -2,19 +2,25 @@ import pygame
 import sys
 import random
 
+from pygame.draw import circle
+
+allSpriteGroup = pygame.sprite.Group()
+
 # Color Constants:
 BLUE  = (  0,  0,255)
 WHITE = (255,255,255)
+RED   = (255,  0,  0)
 
 class Circle(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, color, xPos, yPos):
         pygame.sprite.Sprite.__init__(self) # Initializes sprite
 
         self.image = pygame.Surface([40,50])
-        pygame.draw.ellipse(self.image,BLUE,[0,0,40,50])
+        pygame.draw.ellipse(self.image,color,[0,0,40,50])
         self.rect = self.image.get_rect()
-        self.rect.x = random.randint(0, SCREEN_WIDTH)
-        self.rect.y = random.randint(0, SCREEN_HEIGHT)
+        self.rect.x = xPos
+        self.rect.y = yPos
+        pygame.Surface.set_colorkey(self.image, [0,0,0])
     
 pygame.init()
 
@@ -27,7 +33,16 @@ FPS = 30
 
 done = False
 
-circleObj = Circle()
+# Circle generation
+for i in range(20):
+    xPos = random.randint(10, SCREEN_WIDTH - 10)
+    if i <= 9:
+        yPos = random.randint(10, 150)
+        circleObj = Circle(RED, xPos, yPos)
+    elif i > 9:
+        yPos = random.randint(SCREEN_HEIGHT * 3 // 4, SCREEN_HEIGHT - 10)
+        circleObj = Circle(BLUE, xPos, yPos)
+    allSpriteGroup.add(circleObj)
 
 # Game loop
 while not done:
@@ -38,6 +53,6 @@ while not done:
             sys.exit()
     
     SCREEN.fill(WHITE)
-    SCREEN.blit(circleObj.image, (circleObj.rect.x, circleObj.rect.y)) #FIXME: Get rid of the black surrounding rect
+    allSpriteGroup.draw(SCREEN)
     pygame.display.flip()
     fpsClock.tick(FPS)
