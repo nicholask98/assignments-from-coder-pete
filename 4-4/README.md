@@ -50,6 +50,7 @@
 * Note: group1 and group2 are Sprite groups. True means destroy the colliding sprite from the related group. Therefore, the first True means destroy the colliding sprite from group1 and the second True means destroy the colliding sprite from group2.
 
 
+
 ### Advanced Programmers: 
 #### (if you complete your assignment early, you count as advanced)
 
