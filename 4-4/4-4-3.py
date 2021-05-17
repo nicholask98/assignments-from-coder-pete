@@ -2,9 +2,9 @@ import pygame
 import sys
 import random
 
-from pygame.draw import circle
-
 allSpriteGroup = pygame.sprite.Group()
+blueSpriteGroup = pygame.sprite.Group()
+redSpriteGroup = pygame.sprite.Group()
 
 # Color Constants:
 BLUE  = (  0,  0,255)
@@ -16,12 +16,18 @@ class Circle(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self) # Initializes sprite
 
         self.color = color
-        self.image = pygame.Surface([40,50])
-        pygame.draw.ellipse(self.image,color,[0,0,40,50])
+
+        # FIXME: Advanced Programmers challenge
+        turtle_rect = turtle.get_rect()
+        self.image = pygame.Surface([turtle_rect.width, turtle_rect.height])
+        
+        # self.image = pygame.Surface([40,50])
+        # pygame.draw.ellipse(self.image,color,[0,0,40,50])
+        
         self.rect = self.image.get_rect()
         self.rect.x = xPos
         self.rect.y = yPos
-        pygame.Surface.set_colorkey(self.image, [0,0,0])
+        pygame.Surface.set_colorkey(self.image, WHITE)
     
     def update(self):
         if self.color == RED:
@@ -35,6 +41,8 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+turtle = pygame.image.load('turtle.jpg').convert_alpha()
+
 fpsClock = pygame.time.Clock()
 FPS = 30
 
@@ -46,9 +54,11 @@ for i in range(20):
     if i <= 9:
         yPos = random.randint(10, 150)
         circleObj = Circle(RED, xPos, yPos)
+        redSpriteGroup.add(circleObj)
     elif i > 9:
         yPos = random.randint(SCREEN_HEIGHT * 3 // 4, SCREEN_HEIGHT - 10)
         circleObj = Circle(BLUE, xPos, yPos)
+        blueSpriteGroup.add(circleObj)
     allSpriteGroup.add(circleObj)
 
 # Game loop
@@ -59,6 +69,8 @@ while not done:
             pygame.quit()
             sys.exit()
     
+    pygame.sprite.groupcollide(redSpriteGroup, blueSpriteGroup, True, True)
+
     SCREEN.fill(WHITE)
     allSpriteGroup.draw(SCREEN)
     allSpriteGroup.update()
