@@ -50,7 +50,7 @@ SCREEN_HEIGHT = 650
 SCREEN_WIDTH = 1000
 
 # Image Locations
-PLAYER_SHIP = 'images/Galaga_player_ship.png'
+PLAYER_SHIP = 'images/Galaga_player_ship.jpg'
 ENEMY_SHIP_1 = 'images/Galaga_Dragonfly.png'
 #ENEMY_SHIP_1 = 'images/GLX_Flagship.png'
 
@@ -135,3 +135,4 @@ while True:
 	
 	# Update the screen with what we've drawn.
 	pygame.display.flip()
+	
